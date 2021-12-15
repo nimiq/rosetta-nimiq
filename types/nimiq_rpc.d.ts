@@ -13,7 +13,7 @@ export declare namespace NimiqRpc {
         extraData: string,
         size: number,
         timestamp: number,
-        transactions: [],
+        transactions: string[] | Transaction[],
     }
 
     export interface Peer {
@@ -35,5 +35,22 @@ export declare namespace NimiqRpc {
         startingBlock: number,
         currentBlock: number,
         highestBlock: number,
+    }
+
+    export interface Transaction {
+        hash: string,
+        blockHash: string,
+        blockNumber: number,
+        timestamp: number,
+        confirmations: number,
+        transactionIndex: number,
+        from: string,
+        fromAddress: string,
+        to: string,
+        toAddress: string,
+        value: number,
+        fee: number,
+        data: null,
+        flags: number
     }
 }
