@@ -1,0 +1,1002 @@
+[
+    {
+        "account_identifier": {
+            "address": "NQ81 QY4S 32H9 HD65 PP76 XD9P 1NA6 08GN MVKD"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3912549013194"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ66 3YUH 6EYX SJTP 1V78 KPDK Q6K3 UBHL AU13"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2037718356392"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ31 64A0 BSUV CSQ0 L9NP K392 GULH 1MNQ T371"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "616346547821"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ87 SS2T 4TL6 UGC3 G7XX JG65 NJ9G AUJP Q3RB"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4288464107303"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ59 U88D Q2NU SD81 G7LY QJJB MNJB V019 L7P2"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2797869104496"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ30 CT7L TVF5 KCSX A4HC 7JUS KE2X V0JT NGXX"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3499400638277"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ78 E6LB 252N 0R4E 48R5 HQA0 RSEV CRC1 L51F"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "959955136139"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ95 574M 2A00 YJ5E FCG0 X6CF T6EK 46RK J2DM"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "212350555551"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ51 V10X 7FL8 S07A LG1Q Q95K RTVS DGN4 0VYV"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3632500618170"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ87 J91B HQNV QG8T TN2R 2CH5 LSXK GPY9 A4QT"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1139962285779"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ45 57F9 DFY9 QF7T PLQ0 Q31B NYTC 02TC M2DC"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1254314633307"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ92 H8D2 322H PMEU 2L5S 7MMK RN33 4AF7 GB3B"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3632939299410"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ97 GLBT 3R5X 6H3T EJ1R KU1Y 6FUY AYSL G7PP"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1675339856786"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ59 JF7C HGJL P9VQ C4YS 9816 7BY5 5VPG 7PN6"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2802484553836"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ85 4LGY JV58 SACM PS6S SNG2 BHRF 1DVM XCSR"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3675615334075"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ69 H709 NG0G AXH0 JKVL XC8R 3SB7 SLMN H296"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2292665415468"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ74 5DPP FBX9 F48R XSA8 MYFP UUA8 6012 LPE3"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4333836617138"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ12 EDU8 DVM6 8F6B YTG8 N927 C6DG 56G0 F043"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2462141225973"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ17 GU17 7KQ8 RAX7 8DA6 RHJE 5DVC JVEF U216"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2728003954265"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ80 46H9 PHM1 K00B 17FU BPJF UA4E JLAR V1SM"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2857044352103"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ88 Q5GQ 9AHE VF1B V6T7 SVFY 2J3B UP0T F705"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2172908332818"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ43 A747 C9MT RLD2 461C N0H9 U3XJ K0LD JJ7S"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2046981839140"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ10 9KNB 52K3 XD7V 4Q44 E13M A82H M1SD HSM3"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1314850332413"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ09 7J9Q 3XDM 04UM YFSV DXM0 CVLQ D05S F4HP"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4530092308230"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ47 M3UR QPAK S7M3 2UQ0 SGYS 0VQY C03D CB10"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2273326979972"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ04 A2TG VPVJ 8FC9 Q2UE 1ASM HFC5 LF5Y 9ANR"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "229683375857"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ15 61FF QB7F G2CG NX7D 1N2Y 4LJE NHCQ YXXB"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3447574730484"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ58 XYLM H1U2 J05A 57FT ADGY Y8X9 7YH0 649N"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "186147584710"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ94 SH1P 42V3 0P88 CJC7 33QD BATK SUD8 F17U"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "816813234058"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ42 TJPP UJQ1 FJUM CDPD R36V 25RQ 0A58 VQPA"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1522679785510"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ28 1G6S SFJQ 47YQ DRQ8 0725 2F5S BX6V F5QN"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1810599885218"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ64 V0RA TJRY DKHM ELSN PJ6B 4RXM JX2T HJME"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3928268600602"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ50 JNEJ Q8FE HBMA LHH5 7RRS YXS2 JD6T P3BR"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4345682951083"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ82 EBP4 RAKU 75CA BT2S VCRT MMY3 HVRT 7PLS"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1466812932943"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ46 XFF4 JEDY X1JA U8KQ BYA5 GMKF QHL8 FRR3"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1489601677845"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ18 EN45 0PBB A6CG NGV4 74N2 TV00 0D8K J6MU"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1697810883610"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ03 QULF GLJ3 S5F6 EGF1 2L4K LRHL YYGC D2TB"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1764601181005"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ50 1PEF BF2E 4R90 QSMT UU7B J46G 58HF AVFE"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4215156122799"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ68 5K2E L5LT 12FJ AXRD EPSE Q1B5 5GF0 PG5F"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2563597431903"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ88 F2AN GM0F 997B E0YC 9A9R QEFM 9KGU TRB0"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2583507324688"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ84 UYKD 7RJF EQRX 27E9 9UVP UDA2 43GX 09PL"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1288632329105"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ80 X6PF X7A6 02X9 Y5PE DKL7 YLCC 1LP1 EQA9"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2152061149714"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ24 USGF 4KUQ AEFG LMCR NLDP 7U92 0VJM Y4B2"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1769137926378"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ16 S9AR XJDA VHEX 888S 54Y5 NB9L GHA0 XQ6J"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3174138086233"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ66 29RT TGR2 V7S3 UH68 0YH9 TTC7 38CR 2FEA"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2857911068634"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ85 4CQF LEQB TJX2 3FY7 E5RX 3GA0 PB8T GXDY"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "608225195711"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ56 H2KG D6FE TCAM J8KP FDA0 JK2U LAEN 42V4"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2818805607563"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ73 7VDN PGHQ TYEB 0RKX 0SSV FK77 RVYP Y9X2"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "401315296181"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ41 URD6 JADU VU69 2RQ4 NSPF F6ME 2B4N XK0J"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3957661824982"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ58 4YBX 14N5 B6S6 YMA4 K7AV 4FAF 9GNR V7MR"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "673976831749"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ95 6B5Y UH6S QG0X 68CK 2G8E VK15 89PU QNEB"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4495438079799"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ44 SNBE 700T Q70Y FB1F 878B 1N8G C7YX HCCN"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3641701233522"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ33 MFKT GCQK FD88 V2SQ Q3MH UPGT 48SM NHM9"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "64496132327"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ04 2PKX 2Y36 HL9F Q7VS NANC 5B9U UGVF 3PT0"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4299952633425"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ49 DLSH J91T 6XTR N6LT 21LY QBKB L06Q 3F80"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2328577589225"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ62 AR1S PUT5 TSGT 9LB1 5A6C 065D Y0RB DS5V"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3380529648801"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ06 N1UK 3C1G TD75 5F96 J4RJ U9CK TM9H YR8N"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2304759841595"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ23 8285 P9N5 P57J 956U 0ED4 DB9G V4MN L3DR"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "281510458767"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ06 L2FQ X759 LG29 7YUQ YT4D N9V5 KQK6 YQNC"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3330670297886"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ39 JY02 8H88 0KRE HV7R QUUP YD9U LUYA YAAP"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4360554821339"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ73 M748 SRT6 TS4C KYLH AULS URDF 1A6J LD6N"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "721495523883"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ12 HY90 74LQ CPEF HY4N Y9KB F5U8 EKNQ N2M4"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2893612913300"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ82 66S7 95UD 3NBH BJC9 642T GU7N XUUR 230Y"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3103664263561"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ03 V90E D630 J331 18XT U23F 235K LNT1 2X4P"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3034927674519"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ57 05B8 CXC0 GSMH M6Y6 3E8T GSSK JVDP XDNM"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3591908346712"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ04 Y2DD 0KKY CK9S 7GFC GYXK EG4Y C746 9Y1D"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2946692921645"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ38 H580 4N32 83VH Y4B9 QVXX LQJ5 PJG6 JMRG"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1891918003981"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ57 1Y9V U1GX PYV0 5HBM 0C64 BTEE NM1A T4A8"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2545886633855"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ42 D95U 7GQB 3LKN 7Y9N 13YF P6PM 5MM1 CNHJ"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1731724708817"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ54 F075 4PPK CFDJ YFT4 4E7T U7BE GSB1 MY1Q"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "120968803833"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ59 N4MU 2CP3 D18K DLNP SLK7 MN4S 1SFJ TYPT"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1725010757821"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ77 72XJ PHCB TE1T TLQ2 NLN8 PC5U TFJ4 A7T2"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1160917172976"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ42 F3K0 CQGB 1RRL ML2C BPJA 2XLK 7A4B JTCJ"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2059827072498"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ98 VTQ0 NN3U P8E9 28CE DKA8 SQ34 XY2V DAFX"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4175818210217"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ57 H800 QL22 5NXD 0VAV X9HE BPDL 9G72 H2HR"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1674513009071"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ53 4J38 24HT VUKY 8ANA VKNL UN2K BFUD ULBB"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2520716108715"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ79 2XYF 3CE6 3NGG M2PU MBX4 KKK7 8YX3 TMGA"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3988033357645"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ32 3LUY A0JD 4XKS 1J99 UD1R NB2K Y0XY 7DYG"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "981999944888"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ20 0G92 7L74 PUS2 9AXS 8935 9AAL S1A5 L725"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "140351418272"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ58 1A5S VFMB GH7T XHJ2 J9PR 8E7H L7B6 CNJJ"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3805230276955"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ31 NNVY 489A 8MHU 76XJ XKV7 AVDJ 1HPG PDL0"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2717974292208"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ55 R9AR 02T2 N2TH 2CE3 N3SV 6BHV PJKJ H84V"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3846768612612"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ46 A9DS L15A QMUD 3CMP DR4S MKL5 TNHD V8P2"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1318198294183"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ09 1X92 YXT9 9JHU Q1MT FUE2 S2F1 85GS JR2A"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2050464693878"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ55 A3TK 8TY7 85YM HEFA 5QDL VHNG CXPJ E7CU"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1240454633066"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ83 QF2X YLFL 029Q D9FB REN4 2VTF 431K K0BC"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "236875154891"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ51 P076 KPD7 KG5R YQEF BBC9 1SYJ 3SUN Q6MH"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2826617018520"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ77 9Y9G LM80 GGLE T9LQ 32EF BAY0 A3X9 PNG1"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1148507196143"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ42 4YUE 7RV1 JJQS 3U9P T61K 2UYR 8T2Y 9UJY"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3381549381205"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ65 9LPY 9SXX AY9P T4CR U4J5 TT5A 6L8T N9BQ"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2808344288194"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ34 AJ8G ERSA NBU5 SSDV 6MP9 C38F SGKL Q29S"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2733259793223"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ05 1MNH 7FS4 PR1F VNB3 6DBF GPXH L9P0 52C6"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4141402609685"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ68 HU9K 2T6U 3D5A KC8N E328 03C9 T253 LGSX"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1994366138880"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ43 2PD6 263X 6TTQ S6UU 7N5M 30XT 6CSE CE9C"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "977370857744"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ89 0R32 ULU8 5X87 9SSN K0AS XADA JRKQ GMTP"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "931349585663"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ74 AF2X PCMP 875R 09Y9 P0YT NKL8 HBAR KLB1"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "3199786037844"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ43 P1T2 7TTQ G08Y 3J5A FXJR XBAG MY26 8D9H"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "2633896484747"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ91 36L1 GBR1 07KU Q3HR TEA5 9FFK TK5G N62A"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "4322716282913"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ04 XHR5 R8HS 532F UDBX N3N2 DSCG F65R 3BT1"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "1868250172493"
+    },
+    {
+        "account_identifier": {
+            "address": "NQ08 MYR4 TK6B SERK G43J LCE0 Q49K NPR8 UDFQ"
+        },
+        "currency": {
+            "symbol": "NIM",
+            "decimals": 5
+        },
+        "value": "19398376195437"
+    }
+]
