@@ -53,4 +53,11 @@ export declare namespace NimiqRpc {
         data: null,
         flags: number
     }
+
+    export interface Account {
+        id: string,
+        address: string,
+        balance: number,
+        type: 0 | 1 | 2,
+    }
 }
