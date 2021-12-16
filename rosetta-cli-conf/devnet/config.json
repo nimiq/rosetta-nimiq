@@ -12,5 +12,23 @@
             "tip": true
         }
     },
-    "construction": null
+    "construction": {
+        "constructor_dsl_file": "./nimiq.ros",
+        "prefunded_accounts": [
+            {
+                "privkey": "1f3c8740310d3bec848071ca2744de23ab6e3e472dcbe45c0b835b011cbe9ebb",
+                "account_identifier": {
+                    "address": "NQ42 TJPP UJQ1 FJUM CDPD R36V 25RQ 0A58 VQPA"
+                },
+                "curve_type": "edwards25519",
+                "currency": {
+                    "symbol": "NIM",
+                    "decimals": 5
+                }
+            }
+        ],
+        "end_conditions": {
+            "transfer": 10
+        }
+    }
 }

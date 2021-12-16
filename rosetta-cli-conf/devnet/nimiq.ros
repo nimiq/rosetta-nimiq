@@ -1,0 +1,138 @@
+request_funds(1){
+  find_account{
+    currency = {"symbol":"NIM", "decimals":5};
+    random_account = find_balance({
+      "minimum_balance":{
+        "value": "0",
+        "currency": {{currency}}
+      }
+    });
+  },
+
+  // Create a separate scenario to request funds so that
+  // the address we are using to request funds does not
+  // get rolled back if funds do not yet exist.
+  request{
+    loaded_account = find_balance({
+      "account_identifier": {{random_account.account_identifier}},
+      "minimum_balance":{
+        "value": "100000",
+        "currency": {{currency}}
+      }
+    });
+  }
+}
+
+create_account(1){
+  create{
+    network = {"network":"devnet", "blockchain":"Nimiq"};
+    key = generate_key({"curve_type": "edwards25519"});
+    account = derive({
+      "network_identifier": {{network}},
+      "public_key": {{key.public_key}}
+    });
+
+    // If the account is not saved, the key will be lost!
+    save_account({
+      "account_identifier": {{account.account_identifier}},
+      "keypair": {{key}}
+    });
+  }
+}
+
+transfer(10){
+  transfer{
+    transfer.network = {"network":"devnet", "blockchain":"Nimiq"};
+    currency = {"symbol":"NIM", "decimals":5};
+    sender = find_balance({
+      "minimum_balance":{
+        "value": "100000000", // 1000 NIM
+        "currency": {{currency}}
+      }
+    });
+
+    // fee = "138";
+    recipient_amount = random_number({"minimum": "1", "maximum": "100000000"}); // 1000 NIM
+    print_message({"recipient_amount":{{recipient_amount}}});
+
+    // Find recipient and construct operations
+    sender_amount = 0 - {{recipient_amount}};
+    recipient = find_balance({
+      "not_account_identifier":[{{sender.account_identifier}}],
+      "minimum_balance":{
+        "value": "0",
+        "currency": {{currency}}
+      },
+      "create_limit": 100,
+      "create_probability": 50
+    });
+    transfer.confirmation_depth = "1";
+    transfer.operations = [
+      {
+        "operation_identifier":{"index":0},
+        "type":"TRANSFER",
+        "account":{{sender.account_identifier}},
+        "amount":{
+          "value":{{sender_amount}},
+          "currency":{{currency}}
+        }
+      },
+      {
+        "operation_identifier":{"index":1},
+        "type":"TRANSFER",
+        "account":{{recipient.account_identifier}},
+        "amount":{
+          "value":{{recipient_amount}},
+          "currency":{{currency}}
+        }
+      }
+    ];
+  }
+}
+
+return_funds(10){
+  transfer{
+    transfer.network = {"network":"devnet", "blockchain":"Nimiq"};
+    currency = {"symbol":"NIM", "decimals":5};
+    // fee = "138";
+    sender = find_balance({
+      // Exclude prefunded account from fund returns
+      "not_account_identifier":[{
+        "address": "NQ42 TJPP UJQ1 FJUM CDPD R36V 25RQ 0A58 VQPA"
+      }],
+      "minimum_balance":{
+        "value": "1",
+        "currency": {{currency}}
+      }
+    });
+
+    // Set the recipient_amount as some sender.balance-max_fee
+    recipient_amount = {{sender.balance.value}};
+    print_message({"recipient_amount":{{recipient_amount}}});
+    sender_amount = 0 - {{recipient_amount}};
+
+    // Provide a static address as the recipient and construct operations
+    faucet = {"address":"NQ07 0000 0000 0000 0000 0000 0000 0000 0000"};
+    transfer.confirmation_depth = "1";
+    transfer.operations = [
+      {
+        "operation_identifier":{"index":0},
+        "type":"TRANSFER",
+        "account":{{sender.account_identifier}},
+        "amount":{
+          "value":{{sender_amount}},
+          "currency":{{currency}}
+        }
+      },
+      {
+        "operation_identifier":{"index":1},
+        "type":"TRANSFER",
+        "account":{{faucet}},
+        "amount":{
+          "value":{{recipient_amount}},
+          "currency":{{currency}}
+        }
+      }
+    ];
+  }
+}

@@ -39,9 +39,9 @@ export declare namespace NimiqRpc {
 
     export interface Transaction {
         hash: string,
-        blockHash: string,
-        blockNumber: number,
-        timestamp: number,
+        blockHash?: string,
+        blockNumber?: number,
+        timestamp?: number,
         confirmations: number,
         transactionIndex: number,
         from: string,
@@ -50,7 +50,7 @@ export declare namespace NimiqRpc {
         toAddress: string,
         value: number,
         fee: number,
-        data: null,
+        data: string | null,
         flags: number
     }
 

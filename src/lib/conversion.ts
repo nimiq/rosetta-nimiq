@@ -4,6 +4,7 @@ import {
     OperationType,
 } from '../constants.ts'
 import { blockRewardAt } from './block_reward.ts'
+import Nimiq from './nimiq_lib.ts'
 
 import type { Components } from '../../types/rosetta.d.ts'
 import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
@@ -53,17 +54,17 @@ export function rpcBlockToRosetta(block: NimiqRpc.Block): Components.Schemas.Blo
                 ],
             },
             ...(block.transactions.length && typeof block.transactions[0] !== 'string'
-                ? (block.transactions as NimiqRpc.Transaction[]).map(transaction => rpcTransationToRosetta(transaction))
+                ? (block.transactions as NimiqRpc.Transaction[]).map(transaction => rpcTransationToRosetta(transaction, true))
                 : []
             ),
         ],
     }
 }
 
-export function rpcTransationToRosetta(transaction: NimiqRpc.Transaction): Components.Schemas.Transaction {
+export function rpcTransationToRosetta(transaction: Nimiq.Transaction | NimiqRpc.Transaction, include_operation_status: boolean): Components.Schemas.Transaction {
     return {
         transaction_identifier: {
-            hash: transaction.hash,
+            hash: typeof transaction.hash === 'function' ? transaction.hash().toHex() : transaction.hash,
         },
         operations: [
             {
@@ -72,9 +73,9 @@ export function rpcTransationToRosetta(transaction: NimiqRpc.Transaction): Compo
                 },
                 related_operations: [],
                 type: OperationType.TRANSFER,
-                status: OperationStatus.SUCCESS,
+                ...(include_operation_status ? { status: OperationStatus.SUCCESS } : {}),
                 account: {
-                    address: transaction.fromAddress,
+                    address: 'sender' in transaction ? transaction.sender.toUserFriendlyAddress() : transaction.fromAddress,
                 },
                 amount: {
                     currency: {
@@ -95,9 +96,9 @@ export function rpcTransationToRosetta(transaction: NimiqRpc.Transaction): Compo
                     },
                 ],
                 type: OperationType.TRANSFER,
-                status: OperationStatus.SUCCESS,
+                ...(include_operation_status ? { status: OperationStatus.SUCCESS } : {}),
                 account: {
-                    address: transaction.toAddress,
+                    address: 'recipient' in transaction ? transaction.recipient.toUserFriendlyAddress() : transaction.toAddress,
                 },
                 amount: {
                     currency: {
@@ -109,8 +110,10 @@ export function rpcTransationToRosetta(transaction: NimiqRpc.Transaction): Compo
             },
         ],
         metadata: {
-            data: transaction.data,
-            timestamp: transaction.timestamp,
+            ...(transaction.data
+                ? { data: transaction.data instanceof Uint8Array ? Nimiq.BufferUtils.toHex(transaction.data) : transaction.data }
+                : {}),
+            ...('timestamp' in transaction ? { timestamp: transaction.timestamp } : {}),
         },
     }
 }

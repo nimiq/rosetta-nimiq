@@ -32,7 +32,7 @@ export default new Router()
         const transaction = await rpc<NimiqRpc.Transaction>('getTransactionByHash', req.transaction_identifier.hash)
 
         const result: Paths.MempoolTransaction.Responses.$200 = {
-            transaction: rpcTransationToRosetta(transaction),
+            transaction: rpcTransationToRosetta(transaction, true),
         }
 
         response.body = result
