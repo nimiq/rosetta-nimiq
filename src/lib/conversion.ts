@@ -70,11 +70,7 @@ export function rpcTransationToRosetta(transaction: NimiqRpc.Transaction): Compo
                 operation_identifier: {
                     index: 0,
                 },
-                related_operations: [
-                    {
-                        index: 1,
-                    },
-                ],
+                related_operations: [],
                 type: OperationType.TRANSFER,
                 status: OperationStatus.SUCCESS,
                 account: {
