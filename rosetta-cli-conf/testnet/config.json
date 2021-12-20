@@ -4,7 +4,7 @@
         "network": "testnet"
     },
     "online_url": "http://localhost:8080",
-    "data_directory": "",
+    "data_directory": ".rosetta-data-testnet",
     "data": {
         "bootstrap_balances": "./bootstrap_balances.json",
         "historical_balance_enabled": false,
