@@ -2,6 +2,8 @@ import { Router } from "../deps/oak.ts";
 import rpc from "../rpc.ts"
 import Config from "../config.ts"
 import {
+    ROSETTA_API_VERSION,
+    NIMIQ_NODE_VERSION,
     BLOCKCHAIN,
     GENESIS_HEIGHT,
     OperationStatus,
@@ -10,6 +12,7 @@ import {
 import {
     validateNetwork,
 } from '../lib/validation.ts'
+import pkg from "../../package.json" assert { type: "json" }
 
 
 import type { Paths } from '../../types/rosetta.d.ts'
@@ -78,9 +81,9 @@ export default new Router()
 
         const result: Paths.NetworkOptions.Responses.$200 = {
             version: {
-                rosetta_version: "1.4.10",
-                node_version: "1.5.8",
-                middleware_version: "0.0.1",
+                rosetta_version: ROSETTA_API_VERSION,
+                node_version: NIMIQ_NODE_VERSION,
+                middleware_version: pkg.version,
             },
             allow: {
                 operation_statuses: [
