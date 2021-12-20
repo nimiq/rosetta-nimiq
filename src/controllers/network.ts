@@ -85,10 +85,6 @@ export default new Router()
             allow: {
                 operation_statuses: [
                     {
-                        status: OperationStatus.FAILED,
-                        successful: false,
-                    },
-                    {
                         status: OperationStatus.SUCCESS,
                         successful: true,
                     },
