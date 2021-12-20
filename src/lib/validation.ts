@@ -3,14 +3,18 @@ import Config from "../config.ts"
 import {
     BLOCKCHAIN,
 } from "../constants.ts"
+import {
+    InvalidBlockchainError,
+    InvalidNetworkError,
+} from "./errors.ts"
 
 export function validateNetwork(network_identifier: Components.Schemas.NetworkIdentifier): boolean {
     if (network_identifier.blockchain !== BLOCKCHAIN) {
-        throw new Error('Unsupported Blockchain')
+        throw new InvalidBlockchainError(network_identifier.blockchain)
     }
 
     if (network_identifier.network !== Config.network) {
-        throw new Error('Unsupported network')
+        throw new InvalidNetworkError(network_identifier.network)
     }
 
     return true

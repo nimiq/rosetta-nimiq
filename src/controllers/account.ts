@@ -3,6 +3,10 @@ import rpc from "../rpc.ts"
 import {
     validateNetwork,
 } from '../lib/validation.ts'
+import {
+    BlockIsNotTipError,
+    InconsistentStateError,
+} from '../lib/errors.ts'
 
 import type { Paths } from '../../types/rosetta.d.ts'
 import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
@@ -18,11 +22,11 @@ export default new Router()
         if (req.block_identifier) {
             // Check that the balance is requested at the current head block, as otherwise we cannot serve the request
             if (req.block_identifier.hash && req.block_identifier.hash !== headBefore.hash) {
-                throw new Error('Requested block not available')
+                throw new BlockIsNotTipError(req.block_identifier.hash)
             }
 
             if (req.block_identifier.index && req.block_identifier.index !== headBefore.number) {
-                throw new Error('Requested block not available')
+                throw new BlockIsNotTipError(req.block_identifier.index)
             }
         }
 
@@ -34,7 +38,7 @@ export default new Router()
         // block the balance is.
         if (headBefore.hash !== headAfter.hash) {
             // TODO: This condition can be alleviated by checking if the latter block changed the account's state
-            throw new Error('Inconsistent balance state')
+            throw new InconsistentStateError()
         }
 
         const result: Paths.AccountBalance.Responses.$200 = {

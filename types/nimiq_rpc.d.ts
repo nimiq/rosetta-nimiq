@@ -60,4 +60,9 @@ export declare namespace NimiqRpc {
         balance: number,
         type: 0 | 1 | 2,
     }
+
+    export interface RpcError {
+        code: number,
+        message: string,
+    }
 }

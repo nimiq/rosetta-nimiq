@@ -1,5 +1,7 @@
 import Config from './config.ts'
 
+import type { NimiqRpc } from '../types/nimiq_rpc.d.ts'
+
 type JsonPrimitive = string | number | boolean | null
 
 export default function rpc<T>(method: string, ...params: JsonPrimitive[]): Promise<T> {
@@ -17,6 +19,11 @@ export default function rpc<T>(method: string, ...params: JsonPrimitive[]): Prom
             id: 42,
         })
     })
-    .then(response => response.json())
-    .then(result => result.result)
+    .then(async response => {
+        const result = await response.json()
+        if ('error' in result) {
+            throw new Error((result.error as NimiqRpc.RpcError).message)
+        }
+        return result.result
+    })
 }

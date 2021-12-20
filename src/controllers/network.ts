@@ -12,6 +12,8 @@ import {
 import {
     validateNetwork,
 } from '../lib/validation.ts'
+import { ERRORS } from '../lib/errors.ts'
+import { formatError } from '../lib/error_utils.ts'
 import pkg from "../../package.json" assert { type: "json" }
 
 
@@ -97,18 +99,7 @@ export default new Router()
                     OperationType.TRANSFER,
                     // OperationTypes.STAKE,
                 ],
-                errors: [
-                    // {
-                    //     code: 12,
-                    //     message: "Invalid account format",
-                    //     description: "This error is returned when the requested AccountIdentifier is improperly formatted.",
-                    //     retriable: true,
-                    //     details: {
-                    //         address: "0x1dcc4de8dec75d7aab85b567b6",
-                    //         error: "not base64",
-                    //     },
-                    // },
-                ],
+                errors: ERRORS.map(formatError),
                 historical_balance_lookup: false,
                 timestamp_start_index: GENESIS_HEIGHT,
                 call_methods: [],

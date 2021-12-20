@@ -7,6 +7,11 @@ import {
 import {
     rpcTransationToRosetta,
 } from '../lib/conversion.ts'
+import {
+    UnsupportedCurveError,
+    InvalidOperationsError,
+    MissingParamtersError,
+} from '../lib/errors.ts'
 
 import type { Paths } from '../../types/rosetta.d.ts'
 import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
@@ -33,7 +38,7 @@ export default new Router()
         validateNetwork(req.network_identifier)
 
         if (req.public_key.curve_type !== 'edwards25519') {
-            throw new Error('Unsupported curve')
+            throw new UnsupportedCurveError(req.public_key.curve_type)
         }
 
         const public_key = Nimiq.PublicKey.fromAny(req.public_key.hex_bytes)
@@ -54,15 +59,15 @@ export default new Router()
 
         const senderOperation = req.operations.filter(op => parseInt(op.amount?.value || '0') < 0)
         if (!senderOperation.length) {
-            throw new Error('No sending operation found')
+            throw new InvalidOperationsError('No sending operation found.')
         }
 
         if (senderOperation.length !== 1) {
-            throw new Error('More than one sending operation is not allowed')
+            throw new InvalidOperationsError('More than one sending operation is not allowed.')
         }
 
         if (!senderOperation[0].account) {
-            throw new Error('No sending account found')
+            throw new InvalidOperationsError('Sending operation did not include an account.')
         }
 
         const result: Paths.ConstructionPreprocess.Responses.$200 = {
@@ -96,33 +101,33 @@ export default new Router()
         validateNetwork(req.network_identifier)
 
         if (req.operations.length !== 2) {
-            throw new Error(`Invalid number of operations, expected 2, got ${req.operations.length}`)
+            throw new InvalidOperationsError(`Invalid number of operations, expected 2, got ${req.operations.length}.`)
         }
 
         const senderOperation = req.operations.find(op => parseInt(op.amount?.value || '0') < 0)
         if (!senderOperation) {
-            throw new Error('No sending operation found')
+            throw new InvalidOperationsError('No sending operation found.')
         }
 
         const recipientOperation = req.operations.find(op => parseInt(op.amount?.value || '0') > 0)
         if (!recipientOperation) {
-            throw new Error('No receiving operation found')
+            throw new InvalidOperationsError('No receiving operation found.')
         }
 
         if (!senderOperation.account) {
-            throw new Error('No sending account found')
+            throw new InvalidOperationsError('Sending operation did not include an account.')
         }
 
         if (!recipientOperation.account) {
-            throw new Error('No receiving account found')
+            throw new InvalidOperationsError('Receiving operation did not include an account.')
         }
 
         if (req.public_keys?.length !== 1) {
-            throw new Error('Sender public key is required')
+            throw new MissingParamtersError('Sender public key is required.')
         }
 
         if (!req.metadata || !req.metadata.validity_start_height) {
-            throw new Error('Invalid metadata, expected validity_start_height')
+            throw new MissingParamtersError('Invalid metadata, expected validity_start_height.')
         }
 
         const metadata = req.metadata as { validity_start_height: number, data?: string }
