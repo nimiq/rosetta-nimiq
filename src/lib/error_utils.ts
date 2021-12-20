@@ -10,6 +10,8 @@ export const errorHandler: Middleware = async ({ response }, next) => {
     try {
         await next();
     } catch (err) {
+        console.error(err)
+
         let error: RosettaError
 
         // Handle unhandled errors
