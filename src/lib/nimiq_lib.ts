@@ -1,6 +1,6 @@
-import { Blake2b } from "https://deno.land/x/blake2b/mod.ts";
-// @deno-types="../../../core-js/dist/types.d.ts"
-import Nimiq from '../../../core-js/dist/web.esm.js'
+import { Blake2b } from "../deps/blake2b.ts";
+// @deno-types="../deps/nimiq/types.d.ts"
+import Nimiq from '../deps/nimiq/web.esm.js'
 
 import Config from "../config.ts"
 

@@ -1,4 +1,4 @@
-import { Middleware } from "https://deno.land/x/oak/middleware.ts";
+import { Middleware } from "../deps/oak.ts";
 
 import type { Components } from '../../types/rosetta.d.ts'
 import {

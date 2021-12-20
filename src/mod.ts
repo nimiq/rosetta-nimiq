@@ -1,4 +1,4 @@
-import { Application, Router } from "https://deno.land/x/oak/mod.ts";
+import { Application, Router } from "./deps/oak.ts";
 import { errorHandler } from './lib/error_utils.ts'
 
 import network from './controllers/network.ts'

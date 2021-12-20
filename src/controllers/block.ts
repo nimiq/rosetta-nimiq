@@ -1,4 +1,4 @@
-import { Router } from "https://deno.land/x/oak/mod.ts";
+import { Router } from "../deps/oak.ts";
 import rpc from "../rpc.ts"
 import {
     validateNetwork,
