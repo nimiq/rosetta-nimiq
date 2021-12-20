@@ -56,10 +56,10 @@ export default new Router()
                 index: genesis.number,
                 hash: genesis.hash,
             },
-            // oldest_block_identifier: {
-            //     "index": 1123941,
-            //     "hash": "0x1f2cc6c5027d2f201a5453ad1119574d2aed23a392654742ac3c78783c071f85"
-            // },
+            oldest_block_identifier: {
+                index: genesis.number,
+                hash: genesis.hash,
+            },
             sync_status: {
                 current_index: syncing ? syncing.currentBlock : head.number,
                 target_index: syncing ? syncing.highestBlock : head.number,
