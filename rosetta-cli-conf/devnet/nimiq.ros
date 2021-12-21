@@ -111,8 +111,10 @@ return_funds(10){
     print_message({"recipient_amount":{{recipient_amount}}});
     sender_amount = 0 - {{recipient_amount}};
 
-    // Provide a static address as the recipient and construct operations
-    faucet = {"address":"NQ07 0000 0000 0000 0000 0000 0000 0000 0000"};
+    // Return funds back to the initial account
+    initial_account = {
+      "address":"NQ42 TJPP UJQ1 FJUM CDPD R36V 25RQ 0A58 VQPA"
+    };
     transfer.confirmation_depth = "1";
     transfer.operations = [
       {
@@ -127,7 +129,7 @@ return_funds(10){
       {
         "operation_identifier":{"index":1},
         "type":"TRANSFER",
-        "account":{{faucet}},
+        "account":{{initial_account}},
         "amount":{
           "value":{{recipient_amount}},
           "currency":{{currency}}
