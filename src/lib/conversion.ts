@@ -4,7 +4,7 @@ import {
     OperationType,
 } from '../constants.ts'
 import { blockRewardAt } from './block_reward.ts'
-import Nimiq from './nimiq_lib.ts'
+import Nimiq from '../deps/nimiq.ts'
 
 import type { Components } from '../../types/rosetta.d.ts'
 import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
