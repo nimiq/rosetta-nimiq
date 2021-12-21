@@ -1,5 +1,5 @@
 import { Router } from "../deps/oak.ts";
-import rpc from "../rpc.ts"
+import rpc from "../lib/rpc.ts"
 import Config from "../config.ts"
 import {
     ROSETTA_API_VERSION,

@@ -1,6 +1,6 @@
-import Config from './config.ts'
+import Config from '../config.ts'
 
-import type { NimiqRpc } from '../types/nimiq_rpc.d.ts'
+import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
 
 type JsonPrimitive = string | number | boolean | null
 

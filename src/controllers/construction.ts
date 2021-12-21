@@ -1,6 +1,6 @@
 import { Router } from "../deps/oak.ts"
 import Nimiq from '../deps/nimiq.ts'
-import rpc from "../rpc.ts"
+import rpc from "../lib/rpc.ts"
 import {
     validateNetwork,
 } from '../lib/validation.ts'
