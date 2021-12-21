@@ -1,8 +1,8 @@
 {
-  "name": "rosetta-server",
+  "name": "@nimiq/rosetta-nimiq",
   "version": "0.0.1",
   "description": "Rosetta API implementation for Nimiq",
-  "main": "build/index.js",
+  "main": "src/mod.ts",
   "author": "Sören <hello@soerenschwert.de>",
   "scripts": {
     "check:devnet": "rosetta-cli check:data --configuration-file rosetta-cli-conf/devnet/config.json",
