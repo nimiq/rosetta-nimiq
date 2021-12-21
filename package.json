@@ -6,8 +6,9 @@
   "author": "Sören <hello@soerenschwert.de>",
   "scripts": {
     "check:devnet": "rosetta-cli check:data --configuration-file rosetta-cli-conf/devnet/config.json",
+    "check:testnet": "rosetta-cli check:data --configuration-file rosetta-cli-conf/testnet/config.json",
     "construction:devnet": "rosetta-cli check:construction --configuration-file rosetta-cli-conf/devnet/config.json",
-    "check:testnet": "rosetta-cli check:data --configuration-file rosetta-cli-conf/testnet/config.json"
+    "fmt": "deno fmt --config deno.json"
   },
   "license": "Apache-2.0"
 }

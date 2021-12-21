@@ -1,52 +1,49 @@
 import { Router } from "../deps/oak.ts";
-import rpc from "../lib/rpc.ts"
-import Config from "../config.ts"
+import rpc from "../lib/rpc.ts";
+import Config from "../config.ts";
 import {
-    ROSETTA_API_VERSION,
-    NIMIQ_NODE_VERSION,
     BLOCKCHAIN,
     GENESIS_HEIGHT,
+    NIMIQ_NODE_VERSION,
     OperationStatus,
     OperationType,
-} from "../constants.ts"
-import {
-    validateNetwork,
-} from '../lib/validation.ts'
-import { ERRORS } from '../lib/errors.ts'
-import { formatError } from '../lib/error_utils.ts'
-import pkg from "../../package.json" assert { type: "json" }
+    ROSETTA_API_VERSION,
+} from "../constants.ts";
+import { validateNetwork } from "../lib/validation.ts";
+import { ERRORS } from "../lib/errors.ts";
+import { formatError } from "../lib/error_utils.ts";
+import pkg from "../../package.json" assert { type: "json" };
 
-
-import type { Paths } from '../../types/rosetta.d.ts'
-import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
+import type { Paths } from "../../types/rosetta.d.ts";
+import type { NimiqRpc } from "../../types/nimiq_rpc.d.ts";
 
 export default new Router()
     .post("/list", async ({ request, response }) => {
-        const req = await request.body().value as Paths.NetworkList.RequestBody
+        const req = await request.body().value as Paths.NetworkList.RequestBody;
 
         const result: Paths.NetworkList.Responses.$200 = {
             network_identifiers: [
                 {
                     blockchain: BLOCKCHAIN,
                     network: Config.network,
-                }
+                },
             ],
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     .post("/status", async ({ request, response }) => {
-        const req = await request.body().value as Paths.NetworkStatus.RequestBody
+        const req = await request.body().value as Paths.NetworkStatus.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
         const [head, genesis, peers, consensus, syncing] = await Promise.all([
-            rpc<NimiqRpc.Block>('getBlockByNumber', 'latest'),
-            rpc<NimiqRpc.Block>('getBlockByNumber', GENESIS_HEIGHT),
-            rpc<NimiqRpc.Peer[]>('peerList'),
-            rpc<NimiqRpc.ConsensusState>('consensus'),
-            rpc<NimiqRpc.SyncStatus>('syncing'),
-        ])
+            rpc<NimiqRpc.Block>("getBlockByNumber", "latest"),
+            rpc<NimiqRpc.Block>("getBlockByNumber", GENESIS_HEIGHT),
+            rpc<NimiqRpc.Peer[]>("peerList"),
+            rpc<NimiqRpc.ConsensusState>("consensus"),
+            rpc<NimiqRpc.SyncStatus>("syncing"),
+        ]);
 
         const result: Paths.NetworkStatus.Responses.$200 = {
             current_block_identifier: {
@@ -66,20 +63,20 @@ export default new Router()
                 current_index: syncing ? syncing.currentBlock : head.number,
                 target_index: syncing ? syncing.highestBlock : head.number,
                 stage: consensus,
-                synced: consensus === 'established',
+                synced: consensus === "established",
             },
-            peers: peers.map(peer => ({
+            peers: peers.map((peer) => ({
                 peer_id: peer.id,
                 metadata: peer,
             })),
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     .post("/options", async ({ request, response }) => {
-        const req = await request.body().value as Paths.NetworkOptions.RequestBody
+        const req = await request.body().value as Paths.NetworkOptions.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
         const result: Paths.NetworkOptions.Responses.$200 = {
             version: {
@@ -106,7 +103,7 @@ export default new Router()
                 balance_exemptions: [],
                 mempool_coins: true,
             },
-        }
+        };
 
-        response.body = result
-    })
+        response.body = result;
+    });

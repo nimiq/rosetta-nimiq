@@ -1,33 +1,30 @@
 import { Middleware } from "../deps/oak.ts";
 
-import type { Components } from '../../types/rosetta.d.ts'
-import {
-    RosettaError,
-    InternalError,
-} from './errors.ts'
+import type { Components } from "../../types/rosetta.d.ts";
+import { InternalError, RosettaError } from "./errors.ts";
 
 export const errorHandler: Middleware = async ({ response }, next) => {
     try {
         await next();
     } catch (err) {
-        console.error(err)
+        console.error(err);
 
-        let error: RosettaError
+        let error: RosettaError;
 
         // Handle unhandled errors
         if (err instanceof RosettaError) {
-            error = err
+            error = err;
         } else {
-            error = new InternalError(err instanceof Error ? err.message : String(err))
+            error = new InternalError(err instanceof Error ? err.message : String(err));
         }
 
-        response.status = 500
-        response.body = formatError(error)
+        response.status = 500;
+        response.body = formatError(error);
     }
-}
+};
 
 export function formatError(error: RosettaError): Components.Schemas.Error {
-    const { code, message, description, retriable, details } = error
+    const { code, message, description, retriable, details } = error;
 
     return {
         code,
@@ -35,5 +32,5 @@ export function formatError(error: RosettaError): Components.Schemas.Error {
         description,
         retriable,
         ...(details ? { details } : {}),
-    }
+    };
 }

@@ -5,11 +5,10 @@
 /**
  * Miner reward per block.
  */
- export function blockRewardAt(blockHeight: number): number {
+export function blockRewardAt(blockHeight: number): number {
     const currentSupply = supplyAfter(blockHeight - 1);
     return _blockRewardAt(currentSupply, blockHeight);
 }
-
 
 /**
  * Circulating supply after block.

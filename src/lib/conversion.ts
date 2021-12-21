@@ -1,19 +1,15 @@
-import {
-    GENESIS_HEIGHT,
-    OperationStatus,
-    OperationType,
-} from '../constants.ts'
-import { blockRewardAt } from './block_reward.ts'
-import Nimiq from '../deps/nimiq.ts'
+import { GENESIS_HEIGHT, OperationStatus, OperationType } from "../constants.ts";
+import { blockRewardAt } from "./block_reward.ts";
+import Nimiq from "../deps/nimiq.ts";
 
-import type { Components } from '../../types/rosetta.d.ts'
-import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
+import type { Components } from "../../types/rosetta.d.ts";
+import type { NimiqRpc } from "../../types/nimiq_rpc.d.ts";
 
 export function rpcBlockToRosetta(block: NimiqRpc.Block): Components.Schemas.Block {
-    const block_reward = blockRewardAt(block.number)
-    const transaction_fees = block.transactions.length && typeof block.transactions[0] !== 'string'
+    const block_reward = blockRewardAt(block.number);
+    const transaction_fees = block.transactions.length && typeof block.transactions[0] !== "string"
         ? (block.transactions as NimiqRpc.Transaction[]).reduce((sum, transaction) => sum + transaction.fee, 0)
-        : 0
+        : 0;
 
     return {
         block_identifier: {
@@ -53,18 +49,22 @@ export function rpcBlockToRosetta(block: NimiqRpc.Block): Components.Schemas.Blo
                     },
                 ],
             },
-            ...(block.transactions.length && typeof block.transactions[0] !== 'string'
-                ? (block.transactions as NimiqRpc.Transaction[]).map(transaction => rpcTransationToRosetta(transaction, true))
-                : []
-            ),
+            ...(block.transactions.length && typeof block.transactions[0] !== "string"
+                ? (block.transactions as NimiqRpc.Transaction[]).map((transaction) =>
+                    rpcTransationToRosetta(transaction, true)
+                )
+                : []),
         ],
-    }
+    };
 }
 
-export function rpcTransationToRosetta(transaction: Nimiq.Transaction | NimiqRpc.Transaction, include_operation_status: boolean): Components.Schemas.Transaction {
+export function rpcTransationToRosetta(
+    transaction: Nimiq.Transaction | NimiqRpc.Transaction,
+    include_operation_status: boolean,
+): Components.Schemas.Transaction {
     return {
         transaction_identifier: {
-            hash: typeof transaction.hash === 'function' ? transaction.hash().toHex() : transaction.hash,
+            hash: typeof transaction.hash === "function" ? transaction.hash().toHex() : transaction.hash,
         },
         operations: [
             {
@@ -75,7 +75,9 @@ export function rpcTransationToRosetta(transaction: Nimiq.Transaction | NimiqRpc
                 type: OperationType.TRANSFER,
                 ...(include_operation_status ? { status: OperationStatus.SUCCESS } : {}),
                 account: {
-                    address: 'sender' in transaction ? transaction.sender.toUserFriendlyAddress() : transaction.fromAddress,
+                    address: "sender" in transaction
+                        ? transaction.sender.toUserFriendlyAddress()
+                        : transaction.fromAddress,
                 },
                 amount: {
                     currency: {
@@ -98,7 +100,8 @@ export function rpcTransationToRosetta(transaction: Nimiq.Transaction | NimiqRpc
                 type: OperationType.TRANSFER,
                 ...(include_operation_status ? { status: OperationStatus.SUCCESS } : {}),
                 account: {
-                    address: 'recipient' in transaction ? transaction.recipient.toUserFriendlyAddress() : transaction.toAddress,
+                    address: "recipient" in transaction ? transaction.recipient.toUserFriendlyAddress()
+                    : transaction.toAddress,
                 },
                 amount: {
                     currency: {
@@ -111,9 +114,13 @@ export function rpcTransationToRosetta(transaction: Nimiq.Transaction | NimiqRpc
         ],
         metadata: {
             ...(transaction.data
-                ? { data: transaction.data instanceof Uint8Array ? Nimiq.BufferUtils.toHex(transaction.data) : transaction.data }
+                ? {
+                    data: transaction.data instanceof Uint8Array
+                        ? Nimiq.BufferUtils.toHex(transaction.data)
+                        : transaction.data,
+                }
                 : {}),
-            ...('timestamp' in transaction ? { timestamp: transaction.timestamp } : {}),
+            ...("timestamp" in transaction ? { timestamp: transaction.timestamp } : {}),
         },
-    }
+    };
 }

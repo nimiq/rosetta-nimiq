@@ -1,20 +1,12 @@
-import { Router } from "../deps/oak.ts"
-import Nimiq from '../deps/nimiq.ts'
-import rpc from "../lib/rpc.ts"
-import {
-    validateNetwork,
-} from '../lib/validation.ts'
-import {
-    rpcTransationToRosetta,
-} from '../lib/conversion.ts'
-import {
-    UnsupportedCurveError,
-    InvalidOperationsError,
-    MissingParamtersError,
-} from '../lib/errors.ts'
+import { Router } from "../deps/oak.ts";
+import Nimiq from "../deps/nimiq.ts";
+import rpc from "../lib/rpc.ts";
+import { validateNetwork } from "../lib/validation.ts";
+import { rpcTransationToRosetta } from "../lib/conversion.ts";
+import { InvalidOperationsError, MissingParamtersError, UnsupportedCurveError } from "../lib/errors.ts";
 
-import type { Paths } from '../../types/rosetta.d.ts'
-import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
+import type { Paths } from "../../types/rosetta.d.ts";
+import type { NimiqRpc } from "../../types/nimiq_rpc.d.ts";
 
 /**
  * Order of requests:
@@ -33,41 +25,41 @@ import type { NimiqRpc } from '../../types/nimiq_rpc.d.ts'
 
 export default new Router()
     .post("/derive", async ({ request, response }) => {
-        const req = await request.body().value as Paths.ConstructionDerive.RequestBody
+        const req = await request.body().value as Paths.ConstructionDerive.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
-        if (req.public_key.curve_type !== 'edwards25519') {
-            throw new UnsupportedCurveError(req.public_key.curve_type)
+        if (req.public_key.curve_type !== "edwards25519") {
+            throw new UnsupportedCurveError(req.public_key.curve_type);
         }
 
-        const public_key = Nimiq.PublicKey.fromAny(req.public_key.hex_bytes)
+        const public_key = Nimiq.PublicKey.fromAny(req.public_key.hex_bytes);
 
         const result: Paths.ConstructionDerive.Responses.$200 = {
             account_identifier: {
                 address: public_key.toAddress().toUserFriendlyAddress(),
             },
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     // /preprocess is called offline
     .post("/preprocess", async ({ request, response }) => {
-        const req = await request.body().value as Paths.ConstructionPreprocess.RequestBody
+        const req = await request.body().value as Paths.ConstructionPreprocess.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
-        const senderOperation = req.operations.filter(op => parseInt(op.amount?.value || '0') < 0)
+        const senderOperation = req.operations.filter((op) => parseInt(op.amount?.value || "0") < 0);
         if (!senderOperation.length) {
-            throw new InvalidOperationsError('No sending operation found.')
+            throw new InvalidOperationsError("No sending operation found.");
         }
 
         if (senderOperation.length !== 1) {
-            throw new InvalidOperationsError('More than one sending operation is not allowed.')
+            throw new InvalidOperationsError("More than one sending operation is not allowed.");
         }
 
         if (!senderOperation[0].account) {
-            throw new InvalidOperationsError('Sending operation did not include an account.')
+            throw new InvalidOperationsError("Sending operation did not include an account.");
         }
 
         const result: Paths.ConstructionPreprocess.Responses.$200 = {
@@ -75,80 +67,83 @@ export default new Router()
                 senderOperation[0].account,
             ],
             ...(req.metadata?.data ? { options: { data: req.metadata.data } } : {}),
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     .post("/metadata", async ({ request, response }) => {
-        const req = await request.body().value as Paths.ConstructionMetadata.RequestBody
+        const req = await request.body().value as Paths.ConstructionMetadata.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
-        const head = await rpc<NimiqRpc.Block>('getBlockByNumber', 'latest', false)
+        const head = await rpc<NimiqRpc.Block>("getBlockByNumber", "latest", false);
 
         const result: Paths.ConstructionMetadata.Responses.$200 = {
             metadata: {
                 validity_start_height: head.number,
                 ...(req.options?.data ? { data: req.options.data } : {}),
             },
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     .post("/payloads", async ({ request, response }) => {
-        const req = await request.body().value as Paths.ConstructionPayloads.RequestBody
+        const req = await request.body().value as Paths.ConstructionPayloads.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
         if (req.operations.length !== 2) {
-            throw new InvalidOperationsError(`Invalid number of operations, expected 2, got ${req.operations.length}.`)
+            throw new InvalidOperationsError(`Invalid number of operations, expected 2, got ${req.operations.length}.`);
         }
 
-        const senderOperation = req.operations.find(op => parseInt(op.amount?.value || '0') < 0)
+        const senderOperation = req.operations.find((op) => parseInt(op.amount?.value || "0") < 0);
         if (!senderOperation) {
-            throw new InvalidOperationsError('No sending operation found.')
+            throw new InvalidOperationsError("No sending operation found.");
         }
 
-        const recipientOperation = req.operations.find(op => parseInt(op.amount?.value || '0') > 0)
+        const recipientOperation = req.operations.find((op) => parseInt(op.amount?.value || "0") > 0);
         if (!recipientOperation) {
-            throw new InvalidOperationsError('No receiving operation found.')
+            throw new InvalidOperationsError("No receiving operation found.");
         }
 
         if (!senderOperation.account) {
-            throw new InvalidOperationsError('Sending operation did not include an account.')
+            throw new InvalidOperationsError("Sending operation did not include an account.");
         }
 
         if (!recipientOperation.account) {
-            throw new InvalidOperationsError('Receiving operation did not include an account.')
+            throw new InvalidOperationsError("Receiving operation did not include an account.");
         }
 
         if (req.public_keys?.length !== 1) {
-            throw new MissingParamtersError('Sender public key is required.')
+            throw new MissingParamtersError("Sender public key is required.");
         }
 
         if (!req.metadata || !req.metadata.validity_start_height) {
-            throw new MissingParamtersError('Invalid metadata, expected validity_start_height.')
+            throw new MissingParamtersError("Invalid metadata, expected validity_start_height.");
         }
 
-        const metadata = req.metadata as { validity_start_height: number, data?: string }
+        const metadata = req.metadata as { validity_start_height: number; data?: string };
 
-        const value = parseInt(recipientOperation.amount!.value)
-        const fee = Math.abs(parseInt(senderOperation.amount!.value)) - value
+        const value = parseInt(recipientOperation.amount!.value);
+        const fee = Math.abs(parseInt(senderOperation.amount!.value)) - value;
 
-        const sender_public_key = Nimiq.PublicKey.fromAny(req.public_keys[0].hex_bytes)
-        const dummy_signature = new Nimiq.Signature(new Uint8Array(Nimiq.Signature.SIZE))
+        const sender_public_key = Nimiq.PublicKey.fromAny(req.public_keys[0].hex_bytes);
+        const dummy_signature = new Nimiq.Signature(new Uint8Array(Nimiq.Signature.SIZE));
 
-        let transaction: Nimiq.Transaction
+        let transaction: Nimiq.Transaction;
         if (metadata.data) {
             transaction = new Nimiq.ExtendedTransaction(
-                Nimiq.Address.fromAny(senderOperation.account.address), Nimiq.Account.Type.BASIC,
-                Nimiq.Address.fromAny(recipientOperation.account.address), Nimiq.Account.Type.BASIC,
-                value, fee,
+                Nimiq.Address.fromAny(senderOperation.account.address),
+                Nimiq.Account.Type.BASIC,
+                Nimiq.Address.fromAny(recipientOperation.account.address),
+                Nimiq.Account.Type.BASIC,
+                value,
+                fee,
                 metadata.validity_start_height,
                 Nimiq.Transaction.Flag.NONE,
                 Nimiq.BufferUtils.fromAny(metadata.data),
                 Nimiq.SignatureProof.singleSig(sender_public_key, dummy_signature).serialize(),
-            )
+            );
         } else {
             transaction = new Nimiq.BasicTransaction(
                 sender_public_key,
@@ -157,7 +152,7 @@ export default new Router()
                 fee,
                 metadata.validity_start_height,
                 dummy_signature,
-            )
+            );
         }
 
         const result: Paths.ConstructionPayloads.Responses.$200 = {
@@ -166,86 +161,88 @@ export default new Router()
                 {
                     account_identifier: senderOperation.account,
                     hex_bytes: Nimiq.BufferUtils.toHex(transaction.serializeContent()),
-                    signature_type: 'ed25519',
+                    signature_type: "ed25519",
                 },
             ],
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     .post("/parse", async ({ request, response }) => {
-        const req = await request.body().value as Paths.ConstructionParse.RequestBody
+        const req = await request.body().value as Paths.ConstructionParse.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
-        const transaction = Nimiq.Transaction.fromAny(req.transaction)
+        const transaction = Nimiq.Transaction.fromAny(req.transaction);
 
-        const rosetta_transaction = rpcTransationToRosetta(transaction, false)
+        const rosetta_transaction = rpcTransationToRosetta(transaction, false);
 
         const result: Paths.ConstructionParse.Responses.$200 = {
             operations: rosetta_transaction.operations,
-            ...(req.signed ? {
-                account_identifier_signers: [
-                    {
-                        address: transaction.sender.toUserFriendlyAddress(),
-                    },
-                ],
-            } : {}),
+            ...(req.signed
+                ? {
+                    account_identifier_signers: [
+                        {
+                            address: transaction.sender.toUserFriendlyAddress(),
+                        },
+                    ],
+                }
+                : {}),
             metadata: rosetta_transaction.metadata,
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     .post("/combine", async ({ request, response }) => {
-        const req = await request.body().value as Paths.ConstructionCombine.RequestBody
+        const req = await request.body().value as Paths.ConstructionCombine.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
-        const transaction = Nimiq.Transaction.fromAny(req.unsigned_transaction)
-        const signature = Nimiq.Signature.fromAny(req.signatures[0].hex_bytes)
+        const transaction = Nimiq.Transaction.fromAny(req.unsigned_transaction);
+        const signature = Nimiq.Signature.fromAny(req.signatures[0].hex_bytes);
 
         if (transaction instanceof Nimiq.BasicTransaction) {
-            transaction.signature = signature
+            transaction.signature = signature;
         } else {
-            const public_key = Nimiq.PublicKey.fromAny(req.signatures[0].public_key.hex_bytes)
-            const signature_proof = Nimiq.SignatureProof.singleSig(public_key, signature)
-            transaction.proof = signature_proof.serialize()
+            const public_key = Nimiq.PublicKey.fromAny(req.signatures[0].public_key.hex_bytes);
+            const signature_proof = Nimiq.SignatureProof.singleSig(public_key, signature);
+            transaction.proof = signature_proof.serialize();
         }
 
         const result: Paths.ConstructionCombine.Responses.$200 = {
             signed_transaction: Nimiq.BufferUtils.toHex(transaction.serialize()),
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     .post("/submit", async ({ request, response }) => {
-        const req = await request.body().value as Paths.ConstructionSubmit.RequestBody
+        const req = await request.body().value as Paths.ConstructionSubmit.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
         // TODO: Use `pushTransaction` in Albatross to include mempool checks
-        const hash = await rpc<string>('sendRawTransaction', req.signed_transaction)
+        const hash = await rpc<string>("sendRawTransaction", req.signed_transaction);
 
         const result: Paths.ConstructionSubmit.Responses.$200 = {
             transaction_identifier: {
                 hash,
             },
-        }
+        };
 
-        response.body = result
+        response.body = result;
     })
     .post("/hash", async ({ request, response }) => {
-        const req = await request.body().value as Paths.ConstructionHash.RequestBody
+        const req = await request.body().value as Paths.ConstructionHash.RequestBody;
 
-        validateNetwork(req.network_identifier)
+        validateNetwork(req.network_identifier);
 
-        const transaction = Nimiq.Transaction.fromAny(req.signed_transaction)
+        const transaction = Nimiq.Transaction.fromAny(req.signed_transaction);
 
         const result: Paths.ConstructionHash.Responses.$200 = {
             transaction_identifier: {
                 hash: transaction.hash().toHex(),
             },
-        }
+        };
 
-        response.body = result
-    })
+        response.body = result;
+    });

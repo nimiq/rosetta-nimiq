@@ -1,0 +1,12 @@
+{
+    "fmt": {
+        "files": {
+            "include": ["README.md", "src/"],
+            "exclude": ["src/deps/nimiq/"]
+        },
+        "options": {
+            "lineWidth": 120,
+            "indentWidth": 4
+        }
+    }
+}
