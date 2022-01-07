@@ -8,10 +8,19 @@ node's RPC server.
 
 _TODO: Docker setup instructions_
 
-To run the server for a testnet or mainnet node, change the `network` in src/config.ts to `"testnet"` or `"mainnet"`
-respectively.
+### Configuration
 
-> A future version of this server will accept an external configuration file.
+You can copy the file `src/config.default.json` into a new location and adapt it to your needs. Remove options that
+don't need changing to use their default.
+
+Then pass the file location as the first argument to the command:
+
+```
+deno run --allow-net --allow-read src/mod.ts path/to/config.json
+```
+
+To run the server for a testnet or mainnet node, change the `network` in your config to `"testnet"` or `"mainnet"`
+respectively.
 
 ## Development
 
@@ -24,6 +33,8 @@ deno run --allow-net --watch src/mod.ts
 ```
 
 This will start a Rosetta server at `http://localhost:8080`.
+
+> Add the `--allow-read` flag when using a config file.
 
 ## Testing
 
