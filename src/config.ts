@@ -1,24 +1,24 @@
 import defaultConfig from "./config.default.json" assert { type: "json" };
 
 type Config = {
-    network: "mainnet" | "testnet" | "devnet",
+    network: "mainnet" | "testnet" | "devnet";
     rpc: {
-        endpoint: string,
-        port: number,
-    },
-}
+        endpoint: string;
+        port: number;
+    };
+};
 
 let userConfig;
 try {
     userConfig = Deno.args.length ? JSON.parse(Deno.readTextFileSync(Deno.args[0])) : {};
 } catch (error) {
-    console.error('Failed to parse provided config file:');
+    console.error("Failed to parse provided config file:");
     throw error;
 }
 
 // Testing for object type is fun, because everything is an object in Javascript, even `null`
-if (typeof userConfig !== 'object' || !userConfig || Array.isArray(userConfig)) {
-    throw new Error('Invalid provided config file: not a JSON object');
+if (typeof userConfig !== "object" || !userConfig || Array.isArray(userConfig)) {
+    throw new Error("Invalid provided config file: not a JSON object");
 }
 
 // Validate that userConfig only includes known options

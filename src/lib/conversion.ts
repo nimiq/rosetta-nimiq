@@ -115,6 +115,7 @@ export function rpcTransationToRosetta(
         metadata: {
             ...(transaction.data
                 ? {
+                    // deno-fmt-ignore
                     data: transaction.data instanceof Uint8Array
                         ? Nimiq.BufferUtils.toHex(transaction.data)
                         : transaction.data,
