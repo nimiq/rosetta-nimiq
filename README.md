@@ -6,7 +6,22 @@ node's RPC server.
 
 ## Usage
 
-_TODO: Docker setup instructions_
+The easiest way to run nimiq-rosetta is via docker, for this a container image needs to be created from this directory:
+
+```
+docker build -t rosetta-nimiq:latest .
+```
+
+After which a container instance can be started via:
+
+```
+docker run -e MODE=online -p 8080:8080 rosetta-nimiq:latest
+```
+
+Where the `online` MODE implies that a nimiq node should be automatically started so that `nimiq-rosetta` can
+connect to it and `8080` is the port where `nimiq-rosetta` will be listening. The container also stores all its
+state in the `/data` directory which is defined as a volume.
+
 
 ### Configuration
 
