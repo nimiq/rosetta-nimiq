@@ -1,6 +1,6 @@
 {
   "name": "@nimiq/rosetta-nimiq",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "description": "Rosetta API implementation for Nimiq",
   "main": "src/mod.ts",
   "author": "Sören <hello@soerenschwert.de>",
