@@ -1,4 +1,4 @@
-image: denoland/deno:1.17.2
+image: denoland/deno:1.24.3
 
 # This folder is cached between builds
 # https://docs.gitlab.com/ee/ci/yaml/index.html#cache
